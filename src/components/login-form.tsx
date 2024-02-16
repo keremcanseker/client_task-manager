@@ -45,50 +45,59 @@ export default function LoginForm() {
   };
 
   return isLogin ? (
-    <Card className="sm:w-[350px] w-auto py-4">
-      <CardHeader className="text-center">
-        <CardTitle>Task Manager</CardTitle>
-        <CardDescription>Please login for managing your tasks</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(handleLogin)}>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Username</Label>
-              <Input
-                id="name"
-                placeholder="Username"
-                {...register("username", { required: true })}
-              />
-              {errors.username && (
-                <span className="text-red-500">{errors.username.message}</span>
-              )}
+    <div className="flex flex-col gap-5">
+      <h1 className="text-center text-xl">Built with Golang as Backend</h1>
+      <Card className="sm:w-[350px] w-auto py-4">
+        <CardHeader className="text-center">
+          <CardTitle>Task Manager</CardTitle>
+          <CardDescription>
+            Please login for managing your tasks
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit(handleLogin)}>
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="name">Username</Label>
+                <Input
+                  id="name"
+                  placeholder="Username"
+                  {...register("username", { required: true })}
+                />
+                {errors.username && (
+                  <span className="text-red-500">
+                    {errors.username.message}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  {...register("password", { required: true })}
+                />
+                {errors.password && (
+                  <span className="text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+              </div>
+              <div className="flex justify-between">
+                <Button variant="outline" onClick={() => setIsLogin(false)}>
+                  Register
+                </Button>
+                <Button disabled={isSubmitting} type="submit">
+                  {isSubmitting ? <Loader2 className="animate-spin" /> : null}
+                  Login
+                </Button>
+              </div>
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Password"
-                {...register("password", { required: true })}
-              />
-              {errors.password && (
-                <span className="text-red-500">{errors.password.message}</span>
-              )}
-            </div>
-            <div className="flex justify-between">
-              <Button variant="outline" onClick={() => setIsLogin(false)}>
-                Register
-              </Button>
-              <Button disabled={isSubmitting} type="submit">
-                {isSubmitting ? <Loader2 className="animate-spin" /> : null}
-                Login
-              </Button>
-            </div>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   ) : (
     <RegisterForm isLogin={isLogin} setIsLogin={setIsLogin} />
   );
