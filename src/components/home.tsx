@@ -41,7 +41,6 @@ export default function Home() {
         credentials: "include",
       });
       if (response.ok) {
-        const responseData = await response.json();
         reset();
         fetchTasks();
       }

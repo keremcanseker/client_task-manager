@@ -11,7 +11,7 @@ import { Check } from "lucide-react";
 import { Edit } from "lucide-react";
 
 import { api } from "@/lib/statics";
-import { Checkbox } from "./ui/checkbox";
+// import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
 import { Input } from "./ui/input";
 
@@ -33,14 +33,12 @@ export default function TaskCard({ task, fetchTasks }: TaskCardProps) {
     title: initialTitle,
     description: initialDescription,
     dueDate,
-    completed,
     _id,
   } = task;
 
   const [title, setTitle] = useState(initialTitle);
   const [description, setDescription] = useState(initialDescription);
   const [isEditing, setIsEditing] = useState(false);
-  const [completedState, setCompletedState] = useState(completed);
 
   const handleTaskDelete = async () => {
     try {

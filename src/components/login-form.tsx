@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -19,7 +18,7 @@ import { api } from "@/lib/statics";
 
 export default function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
-  const { setLoggedIn, isLoggedIn } = useLoginStore();
+  const { setLoggedIn } = useLoginStore();
   const {
     register,
     handleSubmit,
